@@ -2,20 +2,35 @@
   "name": "todoist-api-ts",
   "version": "1.0.0",
   "description": "a simple wrapper for the Todoist REST API",
-  "main": "dist/index",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rm -rf ./dist && tsc -p ./ --outdir ./dist"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ManuKle/todoist-api-ts"
+  },
+  "keywords": [
+    "todoist",
+    "typescript"
+  ],
+  "author": "Manuel Klettke",
+  "bugs": {
+    "url": "https://github.com/ManuKle/todoist-api-ts/issues"
+  },
+  "license": "MIT",
   "jest": {
     "transform": {
       "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": ["ts", "tsx", "js", "json"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ]
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
@@ -27,7 +42,6 @@
     "ts-node": "^4.1.0",
     "tslint": "^5.8.0",
     "tslint-config-airbnb": "^5.4.2",
-    "typedoc": "^0.9.0",
     "typescript": "^2.6.2"
   },
   "dependencies": {

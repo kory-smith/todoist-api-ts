@@ -22,7 +22,7 @@ yarn add todoist-api-ts
 
 todoist-api-ts exports a class:
 
-```shell
+```javascript
 import { TodoistApiREST } from "todoist-api-ts";
 ```
 &nbsp;
@@ -31,7 +31,7 @@ import { TodoistApiREST } from "todoist-api-ts";
 To get started, create an instance by providing your API token.  
 The API token can be created/found in your Todoist settings under the Integrations tab:
 
-```shell
+```javascript
 const api = new TodoistApiREST(123456789);
 ```  
 
@@ -53,7 +53,7 @@ As todoist-api-ts uses [axios](https://github.com/axios/axios) under the hood, e
 ```
 
 ### Error handler
-A suitable error handler is provided [here](insert link)
+A suitable error handler is provided [here](https://github.com/ManuKle/todoist-api-ts/blob/master/src/utils/errorhandler.ts)
 
 ## Methods
 

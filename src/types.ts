@@ -3,6 +3,8 @@ export interface TodoistProject {
   id: number;
   /** Project name */
   name: string;
+  //* Id of parent project, if it exists */
+  parent_id?: number;
   /**
    * Project order
    * (Project position in the list of projects)

@@ -3,17 +3,47 @@ export interface TodoistProject {
   id: number;
   /** Project name */
   name: string;
-  //* Id of parent project, if it exists */
-  parent_id?: number;
+  /** One of 20 colors denoted by a code. See https://developer.todoist.com/guides/#colors for more details */
+  color:
+    | 30
+    | 31
+    | 32
+    | 33
+    | 34
+    | 35
+    | 36
+    | 37
+    | 38
+    | 39
+    | 40
+    | 41
+    | 42
+    | 43
+    | 44
+    | 45
+    | 46
+    | 47
+    | 48
+    | 49
+    | 50;
   /**
    * Project order
    * (Project position in the list of projects)
    */
   readonly order: number;
   /** Value from 1 to 4 for the Project indentation level */
-  readonly indent: number;
+  readonly indent: 1 | 2 | 3 | 4;
   /** Number of project comments */
   comment_count: number;
+  shared: Boolean;
+  favorite: Boolean;
+  //* Id of parent project, if it exists */
+  sync_id: number;
+  url: string;
+
+  parent_id?: number;
+  inbox_project?: true;
+  team_inbox?: true;
 }
 
 export interface TodoistComment {

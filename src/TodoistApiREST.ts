@@ -22,7 +22,7 @@ export default class TodoistApiREST {
 
   constructor(token: StrInt) {
     this.axiosInstance = axios.create({
-      baseURL: "https://beta.todoist.com/API/v8/",
+      baseURL: "https://api.todoist.com/rest/v1/",
       headers: {
         Authorization: `Bearer ${token}`,
         "X-Request-Id": uuid4()

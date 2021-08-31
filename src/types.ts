@@ -3,16 +3,58 @@ export interface TodoistProject {
   id: number;
   /** Project name */
   name: string;
+  /** One of 20 colors denoted by a code. See https://developer.todoist.com/guides/#colors for more details */
+  color: TodoistColor
   /**
    * Project order
    * (Project position in the list of projects)
    */
   readonly order: number;
   /** Value from 1 to 4 for the Project indentation level */
-  readonly indent: number;
+  readonly indent: 1 | 2 | 3 | 4;
   /** Number of project comments */
   comment_count: number;
+  /** Whether the project is shared */
+  readonly shared: Boolean;
+  /** Whether the project is a favorite */
+  favorite: Boolean;
+  /** Identifier to find the match between different copies of shared projects. Read more at:
+   * https://developer.todoist.com/rest/v1/#projects
+  */
+  sync_id: number;
+  /** URL to access this project in the Todoist web or mobile applications. */
+  url: string;
+
+  /** ID of parent project, if one exists. */
+  readonly parent_id?: number;
+  /** Whether the project is the Inbox or not. */
+  readonly inbox_project?: true;
+  /** Whether the project is the TeamInbox or not. */
+  readonly team_inbox?: true;
 }
+
+type TodoistColor =
+  | 30
+  | 31
+  | 32
+  | 33
+  | 34
+  | 35
+  | 36
+  | 37
+  | 38
+  | 39
+  | 40
+  | 41
+  | 42
+  | 43
+  | 44
+  | 45
+  | 46
+  | 47
+  | 48
+  | 49
+  | 50;
 
 export interface TodoistComment {
   /** Comment Id */

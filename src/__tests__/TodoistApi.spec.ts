@@ -1,5 +1,5 @@
 import axios = require("axios");
-import { TodoistApiREST } from "../index";
+import TodoistApiREST from "../TodoistApiREST";
 
 describe("Todoist API", () => {
   it("should create an axios instance on instantiating", () => {

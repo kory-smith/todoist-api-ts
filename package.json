@@ -19,18 +19,6 @@
     "url": "https://github.com/ManuKle/todoist-api-ts/issues"
   },
   "license": "MIT",
-  "jest": {
-    "transform": {
-      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "json"
-    ]
-  },
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/jest": "^27.0.1",

@@ -59,7 +59,7 @@ describe("Todoist Projects", () => {
     it("should return the correct data", async () => {
       // @ts-ignore
       const data = await TodoistProjects.createProject(
-        mockInstance,
+        mockInstance as any,
         "testProject"
       );
       expect(data).toEqual("bar");
@@ -97,7 +97,7 @@ describe("Todoist Projects", () => {
     it("should return the correct data", async () => {
       // @ts-ignore
       const data = await TodoistProjects.deleteProjectById(
-        mockInstance,
+        mockInstance as any,
         "testProject"
       );
       expect(data).toEqual("baz");

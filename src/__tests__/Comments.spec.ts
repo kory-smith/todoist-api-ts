@@ -72,7 +72,7 @@ describe("Todoist Comments", () => {
     it("should return the correct data", async () => {
       // @ts-ignore
       const data = await TodoistComments.createComment(
-        mockInstance,
+        mockInstance as any,
         "foobar",
         123
       );

@@ -14,7 +14,7 @@ describe("Todoist API", () => {
     axios.default.create = mockFunc;
     new TodoistApiREST("123");
     expect(mockFunc.mock.calls[0][0]).toMatchObject({
-      baseURL: "https://beta.todoist.com/API/v8/",
+      baseURL: "https://api.todoist.com/rest/v1/",
       headers: { Authorization: "Bearer 123" }
     });
   });

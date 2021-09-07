@@ -56,6 +56,8 @@ type TodoistColor =
   | 49
   | 50;
 
+export interface TodoistSection {}
+
 export interface TodoistComment {
   /** Comment Id */
   id: number;

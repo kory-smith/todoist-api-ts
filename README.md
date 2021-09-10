@@ -57,7 +57,7 @@ const api = new TodoistApiREST(123456789);
 
 ### Error handler
 
-A suitable error handler is provided [here](https://github.com/ManuKle/todoist-api-ts/blob/master/src/utils/errorhandler.ts)
+A suitable error handler is provided [here](https://github.com/kory-smith/todoist-api-ts/blob/master/src/utils/errorhandler.ts)
 
 ## Methods
 

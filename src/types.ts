@@ -56,7 +56,16 @@ type TodoistColor =
   | 49
   | 50;
 
-export interface TodoistSection {}
+export interface TodoistSection {
+  /** Section Id */
+  id: number;
+  /** Id of the project the section belongs to */
+  project_id: number
+  /** Section position among other sections from the same project */
+  order: number
+  /** Section name */
+  name: string;
+}
 
 export interface TodoistComment {
   /** Comment Id */

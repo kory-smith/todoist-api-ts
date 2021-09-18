@@ -105,8 +105,11 @@ export interface TodoistLabel {
   id: number;
   /** Label name */
   name: string;
+  color: TodoistColor;
   /** Number used by clients to sort list of labels */
   order: number;
+  /** Boolean indicating whether or not label is favorited */
+  favorite: boolean;
 }
 
 export type Due = {

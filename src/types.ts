@@ -134,22 +134,32 @@ export interface TodoistTask {
   id: number;
   /** Task's project id */
   readonly project_id: number;
+  /** Task's section id */
+  section_id: number;
   /** Task content */
   content: string;
+  /** Task description */
+  description: string;
+  /** ID of parent task. Absent for top-level tasks. */
+  parent_id?: number;
+  /** Task description */
+  priority: 1 | 2 | 3 | 4;
   /** Flag to mark completed tasks */
   completed: boolean;
   /** Array of label ids, associated with a task */
   label_ids: number[];
   /** Position in the project */
   readonly order: number;
-  /** Task indentation level from 1 to 5 */
-  readonly indent: number;
   /** object representing task due date/time */
   due: Due;
   /** URL to access this task in Todoist web interface */
   url: string;
   /** Number of task comments */
   comment_count: number;
+  /** The responsible user ID (if set, and only for shared tasks). */
+  assignee?: number;
+  /** The ID of the user who assigned the task. 0 if the task is unassigned. */
+  assigner?: number;
 }
 
 export type GetTaskParameters = {

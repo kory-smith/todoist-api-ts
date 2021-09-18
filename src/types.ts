@@ -71,9 +71,9 @@ export interface TodoistComment {
   /** Comment Id */
   id: number;
   /** Comment’s task id (for task comments). */
-  task_id: number;
+  task_id?: number;
   /** Comment’s project id (for project comments) */
-  project_id: number;
+  project_id?: number;
   /** Date and time when comment was added, RFC3339 format in UTC */
   posted: string;
   /** Comment content */

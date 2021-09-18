@@ -114,6 +114,7 @@ export type Due = {
   string: string;
   /** Date in format YYYY-MM-DD corrected to user’s timezone */
   date: string;
+  recurring: boolean;
   /**
    * Only returned if exact due time set
    * (i.e. it’s not a whole-day task),

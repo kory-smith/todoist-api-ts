@@ -56,13 +56,24 @@ type TodoistColor =
   | 49
   | 50;
 
+export interface TodoistSection {
+  /** Section Id */
+  id: number;
+  /** Id of the project the section belongs to */
+  project_id: number
+  /** Section position among other sections from the same project */
+  order: number
+  /** Section name */
+  name: string;
+}
+
 export interface TodoistComment {
   /** Comment Id */
   id: number;
   /** Comment’s task id (for task comments). */
-  task_id: number;
+  task_id?: number;
   /** Comment’s project id (for project comments) */
-  project_id: number;
+  project_id?: number;
   /** Date and time when comment was added, RFC3339 format in UTC */
   posted: string;
   /** Comment content */
@@ -94,8 +105,11 @@ export interface TodoistLabel {
   id: number;
   /** Label name */
   name: string;
+  color: TodoistColor;
   /** Number used by clients to sort list of labels */
   order: number;
+  /** Boolean indicating whether or not label is favorited */
+  favorite: boolean;
 }
 
 export type Due = {
@@ -103,6 +117,7 @@ export type Due = {
   string: string;
   /** Date in format YYYY-MM-DD corrected to user’s timezone */
   date: string;
+  recurring: boolean;
   /**
    * Only returned if exact due time set
    * (i.e. it’s not a whole-day task),
@@ -123,22 +138,32 @@ export interface TodoistTask {
   id: number;
   /** Task's project id */
   readonly project_id: number;
+  /** Task's section id */
+  section_id: number;
   /** Task content */
   content: string;
+  /** Task description */
+  description: string;
+  /** ID of parent task. Absent for top-level tasks. */
+  parent_id?: number;
+  /** Task description */
+  priority: 1 | 2 | 3 | 4;
   /** Flag to mark completed tasks */
   completed: boolean;
   /** Array of label ids, associated with a task */
   label_ids: number[];
   /** Position in the project */
   readonly order: number;
-  /** Task indentation level from 1 to 5 */
-  readonly indent: number;
   /** object representing task due date/time */
   due: Due;
   /** URL to access this task in Todoist web interface */
   url: string;
   /** Number of task comments */
   comment_count: number;
+  /** The responsible user ID (if set, and only for shared tasks). */
+  assignee?: number;
+  /** The ID of the user who assigned the task. 0 if the task is unassigned. */
+  assigner?: number;
 }
 
 export type GetTaskParameters = {

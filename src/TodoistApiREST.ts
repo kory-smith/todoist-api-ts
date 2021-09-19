@@ -8,13 +8,14 @@ import { TodoistComments } from "./Partials/TodoistComments";
 import { TodoistLabels } from "./Partials/TodoistLabels";
 import {
   GetTaskParameters,
-  PostTaskParameters,
+  UpdateTaskParameters,
   StrInt,
   TodoistProject,
   TodoistTask,
   TodoistComment,
   Attachment,
-  TodoistLabel
+  TodoistLabel,
+  CreateTaskParameters
 } from "./types";
 
 export default class TodoistApiREST {
@@ -89,7 +90,7 @@ export default class TodoistApiREST {
   /** Updates a task and returns an empty body with the HTTP status code 204. */
   public updateTaskById(
     id: StrInt,
-    params: PostTaskParameters
+    params: UpdateTaskParameters
   ): Promise<Axios.AxiosResponse> {
     return TodoistTasks.updateTaskById(this.axiosInstance, id, params);
   }

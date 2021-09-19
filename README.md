@@ -92,7 +92,7 @@ Copied from the typings:
     getTaskById(id: StrInt): Promise<TodoistTask>;
 
     /** Updates a task and returns an empty body with the HTTP status code 204. */
-    updateTaskById(id: StrInt, params: PostTaskParameters): Promise<Axios.AxiosResponse>;
+    updateTaskById(id: StrInt, params: UpdateTaskParameters): Promise<Axios.AxiosResponse>;
 
     /**
      * Closes a task and returns an empty body with a HTTP status code 204.

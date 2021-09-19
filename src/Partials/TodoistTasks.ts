@@ -4,7 +4,7 @@ import Axios = require("axios");
 import {
   StrInt,
   TodoistTask,
-  PostTaskParameters,
+  UpdateTaskParameters,
   GetTaskParameters,
   CreateTaskParameters
 } from "../types";
@@ -79,7 +79,7 @@ export namespace TodoistTasks {
   export const updateTaskById = (
     axiosInstance: Axios.AxiosInstance,
     id: StrInt,
-    parameters: PostTaskParameters
+    parameters: UpdateTaskParameters
   ): Promise<Axios.AxiosResponse> => {
     const { due_string, due_date, due_datetime } = parameters;
     if (maxOneArgExists(due_string, due_date, due_datetime)) {

@@ -184,7 +184,7 @@ export type GetTaskParameters = {
 };
 
 /** Please note that only one of the due_* fields can be used at the same time (due_lang is a special case). */
-export type PostTaskParameters = {
+export type UpdateTaskParameters = {
   /** Task content */
   content: string;
   description: string;

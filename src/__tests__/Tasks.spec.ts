@@ -1,14 +1,14 @@
 import { TodoistTasks } from "../Partials/TodoistTasks";
 
 describe("Todoist Tasks", () => {
-  const mockGet = jest.fn(() => new Promise(res => res({ data: "foo" })));
-  const mockPost = jest.fn(() => new Promise(res => res({ data: "bar" })));
-  const mockDelete = jest.fn(() => new Promise(res => res({ data: "baz" })));
+  const mockGet = jest.fn(() => new Promise((res) => res({ data: "foo" })));
+  const mockPost = jest.fn(() => new Promise((res) => res({ data: "bar" })));
+  const mockDelete = jest.fn(() => new Promise((res) => res({ data: "baz" })));
 
   const mockInstance = {
     get: mockGet,
     post: mockPost,
-    delete: mockDelete
+    delete: mockDelete,
   };
 
   afterEach(() => {
@@ -37,53 +37,56 @@ describe("Todoist Tasks", () => {
       expect(() => {
         // @ts-ignore
         TodoistTasks.getTasksFiltered(mockInstance);
-      }).toThrow("getTasksFiltered should be called with at least one argument. You might want getAllTasks instead.")
-    })
+      }).toThrow(
+        "getTasksFiltered should be called with at least one argument. You might want getAllTasks instead."
+      );
+    });
 
     it("should pass the right arguments", () => {
       const args = {
         filter: "foo",
-        lang: "US"
+        lang: "US",
       };
       // @ts-ignore
       TodoistTasks.getTasksFiltered(mockInstance, args);
       expect(mockGet).toHaveBeenCalledWith("tasks", {
         params: {
           filter: "foo",
-          lang: "US"
-        }
+          lang: "US",
+        },
       });
     });
 
     it("should return the correct data", async () => {
       // @ts-ignore
-      const data = await TodoistTasks.getTasksFiltered(mockInstance, {filter: "test"});
+      const data = await TodoistTasks.getTasksFiltered(mockInstance, {
+        filter: "test",
+      });
       expect(data).toEqual("foo");
     });
- 
+
     it("should throw an error if both filter and any id is defined", () => {
       const failParams = {
         filter: "hello world",
-        ids: ["hey"]
+        ids: ["hey"],
       };
       expect(() => {
         // @ts-ignore
         TodoistTasks.getTasksFiltered(mockInstance, failParams);
-      }).toThrow()      
-
-    })
+      }).toThrow();
+    });
   });
 
   describe("createNewTask", () => {
     const passParameters = {
       content: "hello world",
-      due_string: "today"
+      due_string: "today",
     };
 
     const failParameters = {
       content: "hello world",
       due_string: "today",
-      due_date: "2018-01-01"
+      due_date: "2018-01-01",
     };
 
     it('should throw an error if more than one "due_" arguments are passed', () => {
@@ -130,13 +133,13 @@ describe("Todoist Tasks", () => {
   describe("updateTaskById", () => {
     const passParameters = {
       content: "hello world",
-      due_string: "today"
+      due_string: "today",
     };
 
     const failParameters = {
       content: "hello world",
       due_string: "today",
-      due_date: "2018-01-01"
+      due_date: "2018-01-01",
     };
 
     it('should throw an error if more than one "due_" arguments are passed', () => {

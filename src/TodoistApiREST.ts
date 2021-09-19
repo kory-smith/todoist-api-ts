@@ -177,8 +177,8 @@ export default class TodoistApiREST {
     return TodoistComments.createComment(
       this.axiosInstance,
       content,
-      taskId,
       projectId,
+      taskId,
       attachment
     );
   }

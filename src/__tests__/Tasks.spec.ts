@@ -32,28 +32,46 @@ describe("Todoist Tasks", () => {
   });
 
   describe("getTasksFiltered", () => {
+    it("should error if called with no parameters", () => {
+      // @ts-ignore
+      expect(() => {
+        // @ts-ignore
+        TodoistTasks.getTasksFiltered(mockInstance);
+      }).toThrow("getTasksFiltered should be called with at least one argument. You might want getAllTasks instead.")
+    })
+
     it("should pass the right arguments", () => {
       const args = {
-        project_id: 1234,
-        label_id: 5678,
-        filter: "foo"
+        filter: "foo",
+        lang: "US"
       };
       // @ts-ignore
       TodoistTasks.getTasksFiltered(mockInstance, args);
       expect(mockGet).toHaveBeenCalledWith("tasks", {
         params: {
-          project_id: 1234,
-          label_id: 5678,
-          filter: "foo"
+          filter: "foo",
+          lang: "US"
         }
       });
     });
 
     it("should return the correct data", async () => {
       // @ts-ignore
-      const data = await TodoistTasks.getTasksFiltered(mockInstance);
+      const data = await TodoistTasks.getTasksFiltered(mockInstance, {filter: "test"});
       expect(data).toEqual("foo");
     });
+ 
+    it("should throw an error if both filter and any id is defined", () => {
+      const failParams = {
+        filter: "hello world",
+        ids: ["hey"]
+      };
+      expect(() => {
+        // @ts-ignore
+        TodoistTasks.getTasksFiltered(mockInstance, failParams);
+      }).toThrow()      
+
+    })
   });
 
   describe("createNewTask", () => {

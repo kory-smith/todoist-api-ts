@@ -77,7 +77,7 @@ export default class TodoistApiREST {
   }
 
   /** Creates a new task and returns its value in a JSON format. */
-  public createNewTask(params: PostTaskParameters): Promise<TodoistTask> {
+  public createNewTask(params: CreateTaskParameters): Promise<TodoistTask> {
     return TodoistTasks.createNewTask(this.axiosInstance, params);
   }
 

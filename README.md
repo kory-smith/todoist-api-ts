@@ -86,7 +86,7 @@ Copied from the typings:
     getTasksFiltered(params: GetTaskParameters): Promise<TodoistTask[]>;
 
     /** Creates a new task and returns its value in a JSON format. */
-    createNewTask(params: PostTaskParameters): Promise<TodoistTask>;
+    createNewTask(params: CreateTaskParameters): Promise<TodoistTask>;
 
     /** Returns a task by id. */
     getTaskById(id: StrInt): Promise<TodoistTask>;

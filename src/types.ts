@@ -187,14 +187,11 @@ export type GetTaskParameters = {
 export type PostTaskParameters = {
   /** Task content */
   content: string;
-  /** Task project id. If not set, task is put to user’s Inbox */
-  project_id?: number;
-  /** Non-zero integer value used by clients to sort tasks inside project */
-  order?: number;
+  description: string;
   /** Ids of labels associated with the task */
   label_ids?: number[];
   /** Task priority from 1 (normal) to 4 (urgent) */
-  priority?: number;
+  priority?: 1 | 2 | 3 | 4;
   /**
    * human-defined task due date
    * (ex.: “next Monday”, “Tomorrow”).
@@ -207,6 +204,7 @@ export type PostTaskParameters = {
   due_datetime?: string;
   /** 2-letter code specifying language in case due_string is not written in English */
   due_lang?: string;
+  assignee?: number;
 };
 
 export type CreateTaskParameters = {

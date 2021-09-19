@@ -169,6 +169,8 @@ export interface TodoistTask {
 export type GetTaskParameters = {
   /** Filter tasks by project id */
   project_id?: number;
+  /** Filter tasks by section id */
+  section_id?: number;
   /** Filter tasks by label */
   label_id?: number;
   /** Filter by any supported filter */
@@ -178,6 +180,7 @@ export type GetTaskParameters = {
    * if it differs from default English
    */
   lang?: string;
+  ids?: number[];
 };
 
 /** Please note that only one of the due_* fields can be used at the same time (due_lang is a special case). */

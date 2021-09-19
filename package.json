@@ -20,6 +20,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@jedmao/semantic-release-npm-github-config": "^1.0.9",
     "@types/axios": "^0.14.0",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.9",

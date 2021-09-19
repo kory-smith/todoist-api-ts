@@ -22,6 +22,10 @@
   "license": "MIT",
   "devDependencies": {
     "@jedmao/semantic-release-npm-github-config": "^1.0.9",
+    "@semantic-release/commit-analyzer": "^9.0.1",
+    "@semantic-release/github": "^8.0.0",
+    "@semantic-release/npm": "^8.0.0",
+    "@semantic-release/release-notes-generator": "^10.0.2",
     "@types/axios": "^0.14.0",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.9",

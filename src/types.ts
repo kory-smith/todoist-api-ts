@@ -209,4 +209,34 @@ export type PostTaskParameters = {
   due_lang?: string;
 };
 
+export type CreateTaskParameters = {
+  /** Task content */
+  content: string;
+  description?: string
+  /** Task project id. If not set, task is put to user’s Inbox */
+  project_id?: number;
+  section_id?: number;
+  parent_id?: number;
+  /** Non-zero integer value used by clients to sort tasks inside project */
+  order?: number;
+  /** Ids of labels associated with the task */
+  label_ids?: number[];
+  /** Task priority from 1 (normal) to 4 (urgent) */
+  priority?: number;
+  /**
+   * human-defined task due date
+   * (ex.: “next Monday”, “Tomorrow”).
+   * Value is set using local (not UTC) time.
+   */
+  due_string?: string;
+  /** Specific date in YYYY-MM-DD format relative to user’s timezone */
+  due_date?: string;
+  /** specific date and time in RFC3339 format in UTC */
+  due_datetime?: string;
+  /** 2-letter code specifying language in case due_string is not written in English */
+  due_lang?: string;
+  assignee?: number
+};
+
+
 export type StrInt = string | number;

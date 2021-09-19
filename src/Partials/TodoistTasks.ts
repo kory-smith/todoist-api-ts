@@ -7,6 +7,7 @@ import {
   PostTaskParameters,
   GetTaskParameters,
 } from "../types";
+import { CreateTaskParameters } from "..";
 
 export namespace TodoistTasks {
   export const getAllTasks = (
@@ -47,7 +48,7 @@ export namespace TodoistTasks {
 
   export const createNewTask = (
     axiosInstance: Axios.AxiosInstance,
-    parameters: PostTaskParameters
+    parameters: CreateTaskParameters
   ): Promise<TodoistTask> => {
     const { due_string, due_date, due_datetime } = parameters;
     if (maxOneArgExists(due_string, due_date, due_datetime)) {

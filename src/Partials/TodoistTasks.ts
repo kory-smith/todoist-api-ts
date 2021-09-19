@@ -6,8 +6,8 @@ import {
   TodoistTask,
   PostTaskParameters,
   GetTaskParameters,
+  CreateTaskParameters
 } from "../types";
-import { CreateTaskParameters } from "..";
 
 export namespace TodoistTasks {
   export const getAllTasks = (

@@ -22,8 +22,17 @@ export namespace TodoistTasks {
 
   export const getTasksFiltered = (
     axiosInstance: Axios.AxiosInstance,
-    parameters: GetTaskParameters
+    parameters?: GetTaskParameters
   ): Promise<TodoistTask[]> => {
+    if (!parameters) {
+      throw new Error("getTasksFiltered should be called with at least one argument. You might want getAllTasks instead.")
+    }
+    const { filter, ids, label_id, project_id, section_id } = parameters;
+    if (!maxOneArgExists(filter, ids, label_id, project_id, section_id)) {
+      throw new TypeError('Filter takes precedence over ids: only include one or the other');
+    } else if (!maxOneArgExists(ids, project_id, label_id, section_id)) {
+      throw new TypeError('only one of ids should be specified');
+    }
     return new Promise((resolve, reject) =>
       axiosInstance
         .get("tasks", { params: parameters })

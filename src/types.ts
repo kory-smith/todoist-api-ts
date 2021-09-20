@@ -220,7 +220,7 @@ export type CreateTaskParameters = {
   /** Ids of labels associated with the task */
   label_ids?: number[];
   /** Task priority from 1 (normal) to 4 (urgent) */
-  priority?: number;
+  priority?: 1 | 2 | 3 | 4;
   /**
    * human-defined task due date
    * (ex.: “next Monday”, “Tomorrow”).

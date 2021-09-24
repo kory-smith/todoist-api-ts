@@ -1,14 +1,14 @@
 import { TodoistLabels } from "../Partials/TodoistLabels";
 
 describe("Todoist Labels", () => {
-  const mockGet = jest.fn(() => new Promise(res => res({ data: "foo" })));
-  const mockPost = jest.fn(() => new Promise(res => res({ data: "bar" })));
-  const mockDelete = jest.fn(() => new Promise(res => res("baz")));
+  const mockGet = jest.fn(() => new Promise((res) => res({ data: "foo" })));
+  const mockPost = jest.fn(() => new Promise((res) => res({ data: "bar" })));
+  const mockDelete = jest.fn(() => new Promise((res) => res("baz")));
 
   const mockInstance = {
     get: mockGet,
     post: mockPost,
-    delete: mockDelete
+    delete: mockDelete,
   };
 
   afterEach(() => {
@@ -46,7 +46,6 @@ describe("Todoist Labels", () => {
         { headers: { "Content-Type": "application/json" } }
       );
     });
-
 
     it("should return the correct data", async () => {
       // @ts-ignore

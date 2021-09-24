@@ -32,25 +32,21 @@ describe("Todoist Labels", () => {
   });
 
   describe("createLabel", () => {
-    it("should pass the right argument if order is omitted", () => {
+    it("should pass the right arguments", () => {
       // @ts-ignore
-      TodoistLabels.createLabel(mockInstance, "foo");
+      TodoistLabels.createLabel(mockInstance, {
+        name: "foo",
+        order: 3,
+        color: 30,
+        favorite: true,
+      });
       expect(mockPost).toHaveBeenCalledWith(
         "labels",
-        { name: "foo" },
+        { name: "foo", order: 3, color: 30, favorite: true },
         { headers: { "Content-Type": "application/json" } }
       );
     });
 
-    it("should pass the right argument if order is included", () => {
-      // @ts-ignore
-      TodoistLabels.createLabel(mockInstance, "foo", 3);
-      expect(mockPost).toHaveBeenCalledWith(
-        "labels",
-        { name: "foo", order: 3 },
-        { headers: { "Content-Type": "application/json" } }
-      );
-    });
 
     it("should return the correct data", async () => {
       // @ts-ignore

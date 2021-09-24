@@ -243,4 +243,11 @@ export type CreateLabelParameters = {
   favorite?: boolean;
 };
 
+export type UpdateLabelParameters = {
+  name?: string;
+  order?: number;
+  color?: TodoistColor;
+  favorite?: boolean;
+};
+
 export type StrInt = string | number;

@@ -16,7 +16,8 @@ import {
   Attachment,
   TodoistLabel,
   CreateTaskParameters,
-  CreateLabelParameters
+  CreateLabelParameters,
+  UpdateLabelParameters    
 } from "./types";
 
 export default class TodoistApiREST {
@@ -222,10 +223,9 @@ export default class TodoistApiREST {
   /** Updates a label and returns an empty body with a HTTP status code 204. */
   public updateLabelById(
     id: StrInt,
-    name?: string,
-    order?: number
+    parameters: UpdateLabelParameters = {}
   ): Promise<Axios.AxiosResponse> {
-    return TodoistLabels.updateLabelById(this.axiosInstance, id, name, order);
+    return TodoistLabels.updateLabelById(this.axiosInstance, id, parameters);
   }
 
   /** Deletes a label and returns an empty body with a HTTP status code 204. */

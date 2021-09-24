@@ -1,6 +1,6 @@
 import Axios = require("axios");
 
-import { StrInt, TodoistLabel, CreateLabelParameters } from "../types";
+import { StrInt, TodoistLabel, CreateLabelParameters, UpdateLabelParameters } from "../types";
 
 /* tslint:disable: no-string-literal */
 
@@ -45,24 +45,16 @@ export namespace TodoistLabels {
   export const updateLabelById = (
     axiosInstance: Axios.AxiosInstance,
     id: StrInt,
-    name?: string,
-    order?: number
+    parameters: UpdateLabelParameters = {}
   ): Promise<Axios.AxiosResponse> => {
-    const params: { name?: string; order?: number } = {};
-    if (name) {
-      params.name = name;
-    }
-    if (order) {
-      params.order = order;
-    }
-    return new Promise((resolve, reject) =>
-      axiosInstance
-        .post(`labels/${id}`, params, {
-          headers: { "Content-Type": "application/json" }
-        })
-        .then(res => resolve(res))
-        .catch(err => reject(err))
-    );
+      return new Promise((resolve, reject) =>
+        axiosInstance
+          .post(`labels/${id}`, parameters, {
+            headers: { "Content-Type": "application/json" },
+          })
+          .then((res) => resolve(res))
+          .catch((err) => reject(err))
+      );
   };
 
   export const deleteLabel = (

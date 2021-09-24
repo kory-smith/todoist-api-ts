@@ -15,7 +15,9 @@ import {
   TodoistComment,
   Attachment,
   TodoistLabel,
-  CreateTaskParameters
+  CreateTaskParameters,
+  CreateLabelParameters,
+  UpdateLabelParameters    
 } from "./types";
 
 export default class TodoistApiREST {
@@ -209,8 +211,8 @@ export default class TodoistApiREST {
   }
 
   /** Creates a new label and returns its object as JSON. */
-  public createLabel(name: string, order?: number): Promise<TodoistLabel> {
-    return TodoistLabels.createLabel(this.axiosInstance, name, order);
+  public createLabel(parameters: CreateLabelParameters): Promise<TodoistLabel> {
+    return TodoistLabels.createLabel(this.axiosInstance, parameters);
   }
 
   /** Returns a label by id. */
@@ -221,14 +223,13 @@ export default class TodoistApiREST {
   /** Updates a label and returns an empty body with a HTTP status code 204. */
   public updateLabelById(
     id: StrInt,
-    name?: string,
-    order?: number
+    parameters: UpdateLabelParameters = {}
   ): Promise<Axios.AxiosResponse> {
-    return TodoistLabels.updateLabelById(this.axiosInstance, id, name, order);
+    return TodoistLabels.updateLabelById(this.axiosInstance, id, parameters);
   }
 
   /** Deletes a label and returns an empty body with a HTTP status code 204. */
-  public deleteLabel(id: StrInt): Promise<Axios.AxiosResponse> {
-    return TodoistLabels.deleteLabel(this.axiosInstance, id);
+  public deleteLabelById(id: StrInt): Promise<Axios.AxiosResponse> {
+    return TodoistLabels.deleteLabelById(this.axiosInstance, id);
   }
 }

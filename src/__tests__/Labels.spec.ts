@@ -1,14 +1,14 @@
 import { TodoistLabels } from "../Partials/TodoistLabels";
 
 describe("Todoist Labels", () => {
-  const mockGet = jest.fn(() => new Promise(res => res({ data: "foo" })));
-  const mockPost = jest.fn(() => new Promise(res => res({ data: "bar" })));
-  const mockDelete = jest.fn(() => new Promise(res => res("baz")));
+  const mockGet = jest.fn(() => new Promise((res) => res({ data: "foo" })));
+  const mockPost = jest.fn(() => new Promise((res) => res({ data: "bar" })));
+  const mockDelete = jest.fn(() => new Promise((res) => res("baz")));
 
   const mockInstance = {
     get: mockGet,
     post: mockPost,
-    delete: mockDelete
+    delete: mockDelete,
   };
 
   afterEach(() => {
@@ -32,22 +32,17 @@ describe("Todoist Labels", () => {
   });
 
   describe("createLabel", () => {
-    it("should pass the right argument if order is omitted", () => {
+    it("should pass the right arguments", () => {
       // @ts-ignore
-      TodoistLabels.createLabel(mockInstance, "foo");
+      TodoistLabels.createLabel(mockInstance, {
+        name: "foo",
+        order: 3,
+        color: 30,
+        favorite: true,
+      });
       expect(mockPost).toHaveBeenCalledWith(
         "labels",
-        { name: "foo" },
-        { headers: { "Content-Type": "application/json" } }
-      );
-    });
-
-    it("should pass the right argument if order is included", () => {
-      // @ts-ignore
-      TodoistLabels.createLabel(mockInstance, "foo", 3);
-      expect(mockPost).toHaveBeenCalledWith(
-        "labels",
-        { name: "foo", order: 3 },
+        { name: "foo", order: 3, color: 30, favorite: true },
         { headers: { "Content-Type": "application/json" } }
       );
     });
@@ -86,7 +81,10 @@ describe("Todoist Labels", () => {
 
     it("should pass the right argument if the optional arguments are included", () => {
       // @ts-ignore
-      TodoistLabels.updateLabelById(mockInstance, 123, "foobar", 4);
+      TodoistLabels.updateLabelById(mockInstance, 123, {
+        name: "foobar",
+        order: 4,
+      });
       expect(mockPost).toHaveBeenCalledWith(
         "labels/123",
         { name: "foobar", order: 4 },
@@ -101,16 +99,16 @@ describe("Todoist Labels", () => {
     });
   });
 
-  describe("deleteLabel", () => {
+  describe("deleteLabelById", () => {
     it("should pass the right argument", () => {
       // @ts-ignore
-      TodoistLabels.deleteLabel(mockInstance, 123);
+      TodoistLabels.deleteLabelById(mockInstance, 123);
       expect(mockDelete).toHaveBeenCalledWith("labels/123");
     });
 
     it("should return the correct data", async () => {
       // @ts-ignore
-      const data = await TodoistLabels.deleteLabel(mockInstance);
+      const data = await TodoistLabels.deleteLabelById(mockInstance);
       expect(data).toEqual("baz");
     });
   });

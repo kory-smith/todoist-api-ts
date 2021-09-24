@@ -160,7 +160,7 @@ Copied from the typings:
     updateLabelById(id: StrInt, name?: string, order?: number): Promise<Axios.AxiosResponse>;
 
     /** Deletes a label and returns an empty body with a HTTP status code 204. */
-    deleteLabel(id: StrInt): Promise<Axios.AxiosResponse>;
+    deleteLabelById(id: StrInt): Promise<Axios.AxiosResponse>;
 ```
 
 ## Contributing

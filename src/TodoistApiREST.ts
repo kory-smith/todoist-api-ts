@@ -15,7 +15,8 @@ import {
   TodoistComment,
   Attachment,
   TodoistLabel,
-  CreateTaskParameters
+  CreateTaskParameters,
+  CreateLabelParameters
 } from "./types";
 
 export default class TodoistApiREST {
@@ -209,8 +210,8 @@ export default class TodoistApiREST {
   }
 
   /** Creates a new label and returns its object as JSON. */
-  public createLabel(name: string, order?: number): Promise<TodoistLabel> {
-    return TodoistLabels.createLabel(this.axiosInstance, name, order);
+  public createLabel(parameters: CreateLabelParameters): Promise<TodoistLabel> {
+    return TodoistLabels.createLabel(this.axiosInstance, parameters);
   }
 
   /** Returns a label by id. */

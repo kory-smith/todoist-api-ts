@@ -236,5 +236,11 @@ export type CreateTaskParameters = {
   assignee?: number
 };
 
+export type CreateLabelParameters = {
+  name: string;
+  order?: number;
+  color?: TodoistColor;
+  favorite?: boolean;
+};
 
 export type StrInt = string | number;

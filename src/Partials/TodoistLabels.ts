@@ -1,6 +1,6 @@
 import Axios = require("axios");
 
-import { StrInt, TodoistLabel } from "../types";
+import { StrInt, TodoistLabel, CreateLabelParameters } from "../types";
 
 /* tslint:disable: no-string-literal */
 
@@ -18,16 +18,11 @@ export namespace TodoistLabels {
 
   export const createLabel = (
     axiosInstance: Axios.AxiosInstance,
-    name: string,
-    order?: number
+    parameters: CreateLabelParameters,
   ): Promise<TodoistLabel> => {
-    const params: { name: string; order?: number } = { name };
-    if (order) {
-      params["order"] = order;
-    }
     return new Promise((resolve, reject) =>
       axiosInstance
-        .post("labels", params, {
+        .post("labels", parameters, {
           headers: { "Content-Type": "application/json" }
         })
         .then(data => resolve(data.data))

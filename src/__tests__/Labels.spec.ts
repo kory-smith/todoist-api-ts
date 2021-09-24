@@ -99,16 +99,16 @@ describe("Todoist Labels", () => {
     });
   });
 
-  describe("deleteLabel", () => {
+  describe("deleteLabelById", () => {
     it("should pass the right argument", () => {
       // @ts-ignore
-      TodoistLabels.deleteLabel(mockInstance, 123);
+      TodoistLabels.deleteLabelById(mockInstance, 123);
       expect(mockDelete).toHaveBeenCalledWith("labels/123");
     });
 
     it("should return the correct data", async () => {
       // @ts-ignore
-      const data = await TodoistLabels.deleteLabel(mockInstance);
+      const data = await TodoistLabels.deleteLabelById(mockInstance);
       expect(data).toEqual("baz");
     });
   });

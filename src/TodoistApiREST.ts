@@ -229,7 +229,7 @@ export default class TodoistApiREST {
   }
 
   /** Deletes a label and returns an empty body with a HTTP status code 204. */
-  public deleteLabel(id: StrInt): Promise<Axios.AxiosResponse> {
-    return TodoistLabels.deleteLabel(this.axiosInstance, id);
+  public deleteLabelById(id: StrInt): Promise<Axios.AxiosResponse> {
+    return TodoistLabels.deleteLabelById(this.axiosInstance, id);
   }
 }

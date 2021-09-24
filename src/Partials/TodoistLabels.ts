@@ -62,7 +62,7 @@ export namespace TodoistLabels {
     );
   };
 
-  export const deleteLabel = (
+  export const deleteLabelById = (
     axiosInstance: Axios.AxiosInstance,
     id: StrInt
   ): Promise<Axios.AxiosResponse> => {

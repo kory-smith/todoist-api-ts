@@ -82,7 +82,10 @@ describe("Todoist Labels", () => {
 
     it("should pass the right argument if the optional arguments are included", () => {
       // @ts-ignore
-      TodoistLabels.updateLabelById(mockInstance, 123, "foobar", 4);
+      TodoistLabels.updateLabelById(mockInstance, 123, {
+        name: "foobar",
+        order: 4,
+      });
       expect(mockPost).toHaveBeenCalledWith(
         "labels/123",
         { name: "foobar", order: 4 },

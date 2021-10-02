@@ -103,4 +103,13 @@ describe("Todoist Projects", () => {
       expect(data).toEqual("baz");
     });
   });
+
+  describe("getProjectCollaboratorsById", () => {
+    it("should pass the right argument", () => {
+      // @ts-ignore
+      TodoistProjects.getProjectCollaboratorsById(mockInstance, 123);
+      expect(mockGet).toHaveBeenCalledWith("projects/123/collaborators");
+    });
+  });
+
 });

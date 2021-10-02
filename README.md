@@ -74,7 +74,7 @@ Copied from the typings:
     getProjectById(id: StrInt): Promise<TodoistProject>;
 
     /** Updates the project for the given id and returns HTTP status code 204 with an empty body. */
-    updateProjectNameById(id: StrInt, newName: string): Promise<Axios.AxiosResponse>;
+    updateProjectById(id: StrInt, parameters: UpdateProjectParameters): Promise<Axios.AxiosResponse>;
 
     /** Deletes a project and returns an empty response. */
     deleteProjectById(id: StrInt): Promise<Axios.AxiosResponse>;

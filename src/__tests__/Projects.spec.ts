@@ -48,7 +48,7 @@ describe("Todoist Projects", () => {
   describe("createProject", () => {
     it("should pass the right argument", () => {
       // @ts-ignore
-      TodoistProjects.createProject(mockInstance, "testproject");
+      TodoistProjects.createProject(mockInstance, {name: "testproject"});
       expect(mockPost).toHaveBeenCalledWith(
         "projects",
         { name: "testproject" },
@@ -60,16 +60,16 @@ describe("Todoist Projects", () => {
       // @ts-ignore
       const data = await TodoistProjects.createProject(
         mockInstance as any,
-        "testProject"
+        {name: "testproject"}
       );
       expect(data).toEqual("bar");
     });
   });
 
-  describe("updateProjectNameById", () => {
+  describe("updateProjectById", () => {
     it("should pass the right argument", () => {
       // @ts-ignore
-      TodoistProjects.updateProjectNameById(mockInstance, 123, "foobar");
+      TodoistProjects.updateProjectById(mockInstance, 123, {name: "foobar"});
       expect(mockPost).toHaveBeenCalledWith(
         "projects/123",
         { name: "foobar" },
@@ -79,9 +79,10 @@ describe("Todoist Projects", () => {
 
     it("should return the correct data", async () => {
       // @ts-ignore
-      const data = await TodoistProjects.updateProjectNameById(
+      const data = await TodoistProjects.updateProjectById(
+      // @ts-ignore
         mockInstance,
-        "testProject"
+        123
       );
       expect(data).toEqual({ data: "bar" });
     });
@@ -103,4 +104,13 @@ describe("Todoist Projects", () => {
       expect(data).toEqual("baz");
     });
   });
+
+  describe("getProjectCollaboratorsById", () => {
+    it("should pass the right argument", () => {
+      // @ts-ignore
+      TodoistProjects.getProjectCollaboratorsById(mockInstance, 123);
+      expect(mockGet).toHaveBeenCalledWith("projects/123/collaborators");
+    });
+  });
+
 });

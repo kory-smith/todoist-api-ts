@@ -1,5 +1,5 @@
 import Axios = require("axios");
-import { StrInt, TodoistProject } from "../types";
+import { StrInt, TodoistProject, CreateProjectParameters, ProjectCollaborator, UpdateProjectParameters  } from "../types";
 
 export namespace TodoistProjects {
   export const getAllProjects = (
@@ -27,13 +27,13 @@ export namespace TodoistProjects {
 
   export const createProject = (
     axiosInstance: Axios.AxiosInstance,
-    projectName: string
+    parameters: CreateProjectParameters
   ): Promise<TodoistProject> => {
     return new Promise((resolve, reject) => {
       axiosInstance
         .post(
           "projects",
-          { name: projectName },
+          parameters,
           { headers: { "Content-Type": "application/json" } }
         )
         .then(res => resolve(res.data))
@@ -41,16 +41,16 @@ export namespace TodoistProjects {
     });
   };
 
-  export const updateProjectNameById = (
+  export const updateProjectById = (
     axiosInstance: Axios.AxiosInstance,
     id: StrInt,
-    newName: string
+    parameters: UpdateProjectParameters = {}
   ): Promise<Axios.AxiosResponse> => {
     return new Promise((resolve, reject) => {
       axiosInstance
         .post(
           `projects/${id}`,
-          { name: newName },
+          parameters,
           { headers: { "Content-Type": "application/json" } }
         )
         .then(res => resolve(res))
@@ -65,6 +65,18 @@ export namespace TodoistProjects {
     return new Promise((resolve, reject) => {
       axiosInstance
         .delete(`projects/${id}`)
+        .then(res => resolve(res))
+        .catch(err => reject(err));
+    });
+  };
+
+  export const getProjectCollaboratorsById = (
+    axiosInstance: Axios.AxiosInstance,
+    id: StrInt
+  ): Promise<Axios.AxiosResponse<ProjectCollaborator[]>> => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .get(`projects/${id}/collaborators`)
         .then(res => resolve(res))
         .catch(err => reject(err));
     });

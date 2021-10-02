@@ -250,4 +250,23 @@ export type UpdateLabelParameters = {
   favorite?: boolean;
 };
 
+export type CreateProjectParameters = {
+  name: string;
+  parent_id?: number;
+  color?: TodoistColor;
+  favorite?: boolean;
+};
+
+export type UpdateProjectParameters = {
+  name?: string;
+  color?: TodoistColor;
+  favorite?: boolean;
+};
+
+export type ProjectCollaborator = {
+  id: number;
+  name: string;
+  email: string;
+};
+
 export type StrInt = string | number;

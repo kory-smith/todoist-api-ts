@@ -17,7 +17,10 @@ import {
   TodoistLabel,
   CreateTaskParameters,
   CreateLabelParameters,
-  UpdateLabelParameters    
+  UpdateLabelParameters,
+  CreateProjectParameters,
+  ProjectCollaborator,
+  UpdateProjectParameters
 } from "./types";
 
 export default class TodoistApiREST {
@@ -41,8 +44,8 @@ export default class TodoistApiREST {
   }
 
   /** Creates a new project and returns its value in a JSON format. */
-  public createProject(projectName: string): Promise<TodoistProject> {
-    return TodoistProjects.createProject(this.axiosInstance, projectName);
+  public createProject(parameters: CreateProjectParameters): Promise<TodoistProject> {
+    return TodoistProjects.createProject(this.axiosInstance, parameters);
   }
 
   /** Returns a JSON object containing a project object related to the given id. */
@@ -51,20 +54,25 @@ export default class TodoistApiREST {
   }
 
   /** Updates the project for the given id and returns HTTP status code 204 with an empty body. */
-  public updateProjectNameById(
+  public updateProjectById(
     id: StrInt,
-    newName: string
+    parameters: UpdateProjectParameters = {}
   ): Promise<Axios.AxiosResponse> {
-    return TodoistProjects.updateProjectNameById(
+    return TodoistProjects.updateProjectById(
       this.axiosInstance,
       id,
-      newName
+      parameters
     );
   }
 
   /** Deletes a project and returns an empty response. */
   public deleteProjectById(id: StrInt): Promise<Axios.AxiosResponse> {
     return TodoistProjects.deleteProjectById(this.axiosInstance, id);
+  }
+
+  /** Returns an array of project collaborators. */
+  public getProjectCollaboratorsById(id: StrInt): Promise<Axios.AxiosResponse<ProjectCollaborator[]>> {
+    return TodoistProjects.getProjectCollaboratorsById(this.axiosInstance, id)
   }
 
   // Tasks

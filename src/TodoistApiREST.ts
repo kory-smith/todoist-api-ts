@@ -18,7 +18,8 @@ import {
   CreateTaskParameters,
   CreateLabelParameters,
   UpdateLabelParameters,
-  CreateProjectParameters
+  CreateProjectParameters,
+  ProjectCollaborator
 } from "./types";
 
 export default class TodoistApiREST {
@@ -66,6 +67,11 @@ export default class TodoistApiREST {
   /** Deletes a project and returns an empty response. */
   public deleteProjectById(id: StrInt): Promise<Axios.AxiosResponse> {
     return TodoistProjects.deleteProjectById(this.axiosInstance, id);
+  }
+
+  /** Returns an array of project collaborators. */
+  public getProjectCollaboratorsById(id: StrInt): Promise<Axios.AxiosResponse<ProjectCollaborator[]>> {
+    return TodoistProjects.getProjectCollaboratorsById(this.axiosInstance, id)
   }
 
   // Tasks

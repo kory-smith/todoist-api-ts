@@ -1,5 +1,5 @@
 import Axios = require("axios");
-import { StrInt, TodoistProject, CreateProjectParameters } from "../types";
+import { StrInt, TodoistProject, CreateProjectParameters, ProjectCollaborator } from "../types";
 
 export namespace TodoistProjects {
   export const getAllProjects = (
@@ -65,6 +65,18 @@ export namespace TodoistProjects {
     return new Promise((resolve, reject) => {
       axiosInstance
         .delete(`projects/${id}`)
+        .then(res => resolve(res))
+        .catch(err => reject(err));
+    });
+  };
+
+  export const getProjectCollaboratorsById = (
+    axiosInstance: Axios.AxiosInstance,
+    id: StrInt
+  ): Promise<Axios.AxiosResponse<ProjectCollaborator[]>> => {
+    return new Promise((resolve, reject) => {
+      axiosInstance
+        .get(`projects/${id}/collaborators`)
         .then(res => resolve(res))
         .catch(err => reject(err));
     });

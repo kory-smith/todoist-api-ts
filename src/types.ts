@@ -250,4 +250,10 @@ export type UpdateLabelParameters = {
   favorite?: boolean;
 };
 
+export type CreateProjectParameters = {
+  name: string;
+  parent_id?: number;
+  color?: TodoistColor;
+  favorite?: boolean;
+};
 export type StrInt = string | number;

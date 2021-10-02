@@ -1,5 +1,5 @@
 import Axios = require("axios");
-import { StrInt, TodoistProject } from "../types";
+import { StrInt, TodoistProject, CreateProjectParameters } from "../types";
 
 export namespace TodoistProjects {
   export const getAllProjects = (
@@ -27,13 +27,13 @@ export namespace TodoistProjects {
 
   export const createProject = (
     axiosInstance: Axios.AxiosInstance,
-    projectName: string
+    parameters: CreateProjectParameters
   ): Promise<TodoistProject> => {
     return new Promise((resolve, reject) => {
       axiosInstance
         .post(
           "projects",
-          { name: projectName },
+          parameters,
           { headers: { "Content-Type": "application/json" } }
         )
         .then(res => resolve(res.data))

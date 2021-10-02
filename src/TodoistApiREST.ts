@@ -17,7 +17,8 @@ import {
   TodoistLabel,
   CreateTaskParameters,
   CreateLabelParameters,
-  UpdateLabelParameters    
+  UpdateLabelParameters,
+  CreateProjectParameters
 } from "./types";
 
 export default class TodoistApiREST {
@@ -41,8 +42,8 @@ export default class TodoistApiREST {
   }
 
   /** Creates a new project and returns its value in a JSON format. */
-  public createProject(projectName: string): Promise<TodoistProject> {
-    return TodoistProjects.createProject(this.axiosInstance, projectName);
+  public createProject(parameters: CreateProjectParameters): Promise<TodoistProject> {
+    return TodoistProjects.createProject(this.axiosInstance, parameters);
   }
 
   /** Returns a JSON object containing a project object related to the given id. */

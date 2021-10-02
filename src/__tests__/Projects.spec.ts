@@ -48,7 +48,7 @@ describe("Todoist Projects", () => {
   describe("createProject", () => {
     it("should pass the right argument", () => {
       // @ts-ignore
-      TodoistProjects.createProject(mockInstance, "testproject");
+      TodoistProjects.createProject(mockInstance, {name: "testproject"});
       expect(mockPost).toHaveBeenCalledWith(
         "projects",
         { name: "testproject" },
@@ -60,7 +60,7 @@ describe("Todoist Projects", () => {
       // @ts-ignore
       const data = await TodoistProjects.createProject(
         mockInstance as any,
-        "testProject"
+        {name: "testproject"}
       );
       expect(data).toEqual("bar");
     });

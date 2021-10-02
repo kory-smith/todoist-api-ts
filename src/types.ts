@@ -256,6 +256,13 @@ export type CreateProjectParameters = {
   color?: TodoistColor;
   favorite?: boolean;
 };
+
+export type UpdateProjectParameters = {
+  name?: string;
+  color?: TodoistColor;
+  favorite?: boolean;
+};
+
 export type ProjectCollaborator = {
   id: number;
   name: string;

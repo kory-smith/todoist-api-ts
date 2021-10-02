@@ -1,5 +1,5 @@
 import Axios = require("axios");
-import { StrInt, TodoistProject, CreateProjectParameters, ProjectCollaborator } from "../types";
+import { StrInt, TodoistProject, CreateProjectParameters, ProjectCollaborator, UpdateProjectParameters  } from "../types";
 
 export namespace TodoistProjects {
   export const getAllProjects = (
@@ -41,16 +41,16 @@ export namespace TodoistProjects {
     });
   };
 
-  export const updateProjectNameById = (
+  export const updateProjectById = (
     axiosInstance: Axios.AxiosInstance,
     id: StrInt,
-    newName: string
+    parameters: UpdateProjectParameters = {}
   ): Promise<Axios.AxiosResponse> => {
     return new Promise((resolve, reject) => {
       axiosInstance
         .post(
           `projects/${id}`,
-          { name: newName },
+          parameters,
           { headers: { "Content-Type": "application/json" } }
         )
         .then(res => resolve(res))

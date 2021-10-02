@@ -19,7 +19,8 @@ import {
   CreateLabelParameters,
   UpdateLabelParameters,
   CreateProjectParameters,
-  ProjectCollaborator
+  ProjectCollaborator,
+  UpdateProjectParameters
 } from "./types";
 
 export default class TodoistApiREST {
@@ -53,14 +54,14 @@ export default class TodoistApiREST {
   }
 
   /** Updates the project for the given id and returns HTTP status code 204 with an empty body. */
-  public updateProjectNameById(
+  public updateProjectById(
     id: StrInt,
-    newName: string
+    parameters: UpdateProjectParameters = {}
   ): Promise<Axios.AxiosResponse> {
-    return TodoistProjects.updateProjectNameById(
+    return TodoistProjects.updateProjectById(
       this.axiosInstance,
       id,
-      newName
+      parameters
     );
   }
 

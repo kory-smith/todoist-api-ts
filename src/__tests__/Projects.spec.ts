@@ -66,10 +66,10 @@ describe("Todoist Projects", () => {
     });
   });
 
-  describe("updateProjectNameById", () => {
+  describe("updateProjectById", () => {
     it("should pass the right argument", () => {
       // @ts-ignore
-      TodoistProjects.updateProjectNameById(mockInstance, 123, "foobar");
+      TodoistProjects.updateProjectById(mockInstance, 123, {name: "foobar"});
       expect(mockPost).toHaveBeenCalledWith(
         "projects/123",
         { name: "foobar" },
@@ -79,9 +79,10 @@ describe("Todoist Projects", () => {
 
     it("should return the correct data", async () => {
       // @ts-ignore
-      const data = await TodoistProjects.updateProjectNameById(
+      const data = await TodoistProjects.updateProjectById(
+      // @ts-ignore
         mockInstance,
-        "testProject"
+        123
       );
       expect(data).toEqual({ data: "bar" });
     });

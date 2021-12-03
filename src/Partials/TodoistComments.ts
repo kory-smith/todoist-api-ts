@@ -35,6 +35,20 @@ export namespace TodoistComments {
     throw new TypeError("projectId or taskId have to be passed");
   };
 
+  export const getAllCommentsForProject = (
+    axiosInstance: Axios.AxiosInstance,
+    projectId: StrInt
+  ): Promise<TodoistComment[]> => {
+    if (!projectId) {
+      throw new TypeError("projectId must be passed");
+    }
+    return new Promise((resolve, reject) =>
+      axiosInstance
+        .get("comments", { params: { project_id: projectId } })
+        .then((data) => resolve(data.data))
+        .catch((err) => reject(err))
+    );
+  };
   export const createComment = (
     axiosInstance: Axios.AxiosInstance,
     content: string,

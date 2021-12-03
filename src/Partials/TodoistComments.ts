@@ -49,6 +49,22 @@ export namespace TodoistComments {
         .catch((err) => reject(err))
     );
   };
+
+  export const getAllCommentsForTask = (
+    axiosInstance: Axios.AxiosInstance,
+    taskId: StrInt
+  ): Promise<TodoistComment[]> => {
+    if (!taskId) {
+      throw new TypeError("taskId must be passed");
+    }
+    return new Promise((resolve, reject) =>
+      axiosInstance
+        .get("comments", { params: { task_id: taskId } })
+        .then((data) => resolve(data.data))
+        .catch((err) => reject(err))
+    );
+  };
+
   export const createComment = (
     axiosInstance: Axios.AxiosInstance,
     content: string,

@@ -1,4 +1,8 @@
-# todoist-api-ts
+# DEPRECATED
+
+[Please use the official Todoist API REST Client instead](https://github.com/Doist/todoist-api-typescript).
+
+## Old description:
 
 This project is a wrapper for the official [Todoist REST API](https://developer.todoist.com/rest/v8/) written in typescript.  
 Typings are included in the package.
@@ -33,7 +37,7 @@ The API token can be created/found in your Todoist settings under the Integratio
 ```javascript
 const api = new TodoistApiREST(123456789);
 ```
-
+ 
 ## Features
 
 ### Promise-based
